@@ -54,6 +54,9 @@ $(BUILD_DIR)/include:
 
 $(CONFIG_TCL): | $(BUILD_DIR)/include
 	python $(VTA_CONFIG) --export-tcl $@
+	sed -i 's/xc7z020clg484-1/xcu280-fsvh2892-2L-e/g' $@
+	sed -i 's/zynq-7000/virtexuplusHBM/g' $@
+	sed -i 's/FPGA_FREQ 100/FPGA_FREQ 250/g' $@
 
 $(IP_PATH): $(SRC_DIR)/* $(CONFIG_TCL)
 	mkdir -p $(IP_BUILD_PATH)
